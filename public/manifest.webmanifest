@@ -1,0 +1,15 @@
+{
+  "name": "VitaSense AI — Know your health, improve your life",
+  "short_name": "VitaSense AI",
+  "description": "Haven💫 chat, AI symptom guidance, and gentle mood check-ins in one calm little app.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#fff5f7",
+  "theme_color": "#f9a8c4",
+  "icons": [
+    { "src": "/app-icon.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/app-icon.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

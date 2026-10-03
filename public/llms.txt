@@ -1,0 +1,8 @@
+# VitaSense AI
+
+> A gentle, AI-powered wellness companion in a soft, pink, mindful app.
+
+VitaSense AI pairs Haven💫 — a warm, judgement-free chat you can vent to anytime — with symptom check-ins, mood and anxiety quizzes, a wellness coach, and personalized daily tips, all in one calm space.
+
+## Pages
+- [Home](/): Landing page and product overview

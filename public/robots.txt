@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+
+Disallow: /auth
+Disallow: /onboarding
+Disallow: /dashboard
+Disallow: /chat
+Disallow: /symptoms
+Disallow: /mood
+Disallow: /coach
+
+Sitemap: https://vitasense-ellea.lovable.app/sitemap.xml
