@@ -55,7 +55,7 @@ function Landing() {
           </div>
           <h1 className="font-display text-5xl md:text-6xl leading-[1.05] font-bold">
             VitaSense AI<br />
-            <span className="text-gradient-pink">know your health.</span><br />
+            <span className="text-gradient-pink">Best For Anxiety.</span><br />
             <span className="text-gradient-pink">Improve your life.</span>
           </h1>
           <p className="mt-5 text-lg text-muted-foreground max-w-md">
@@ -212,26 +212,7 @@ function Landing() {
       </section>
 
 
-      {/* Creator spotlight */}
-      <section className="max-w-4xl mx-auto px-6 pb-20">
-        <div className="glass-card p-8 md:p-10 text-center relative overflow-hidden">
-          <div className="absolute -top-16 -left-16 w-56 h-56 rounded-full gradient-pink opacity-30 blur-3xl" />
-          <div className="absolute -bottom-16 -right-16 w-56 h-56 rounded-full gradient-lavender opacity-30 blur-3xl" />
-          <div className="relative flex flex-col items-center gap-4">
-            <div className="w-14 h-14 rounded-3xl gradient-pink flex items-center justify-center soft-shadow">
-              <User className="w-7 h-7 text-white" />
-            </div>
-            <div>
-              <div className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-1">About me</div>
-              <h2 className="font-display text-3xl md:text-4xl font-bold">Ellea Pepe</h2>
-            </div>
-            <p className="text-sm md:text-base text-muted-foreground leading-relaxed max-w-2xl">
-              I'm a competitive tennis player — I made the swing team in 6th grade and won every single match — and I'm also a competitive dancer. I started a costume collection drive at my studio so dancers could get the gear they need. I built VitaSense AI because I wanted a soft, judgement-free place where people could feel heard, check in with themselves, and get a little guidance. I brought the same hard work, creativity, and care that I put into dance and tennis into this app, because I truly believe wellness should feel gentle, personal, and supportive.
-            </p>
-          </div>
-        </div>
-      </section>
-
+      
 
       {/* Loved by many */}
       <section className="max-w-6xl mx-auto px-6 pb-20">
