@@ -26,7 +26,7 @@ share/python-wheels/
 .installed.cfg
 *.egg
 MANIFEST
-
+node_modules/
 # PyInstaller
 #   Usually these files are written by a python script from a template
 #   before PyInstaller builds the exe, so as to inject date/other infos into it.
@@ -221,4 +221,4 @@ __marimo__/
 # Streamlit
 .streamlit/secrets.toml
 >>>>>>> 44bcf30158e9b167f75d800ba24723ce4262c438
-node_modules/
+node_modules
