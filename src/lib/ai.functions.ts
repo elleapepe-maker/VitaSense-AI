@@ -1,6 +1,6 @@
 import { createServerFn } from "@tanstack/react-start";
 import { requireSupabaseAuth } from "@/integrations/supabase/auth-middleware";
-import { callLovableAI, type ChatMessage } from "@/lib/ai-gateway.server";
+import { callHavenAI, type ChatMessage } from "@/lib/ai-gateway.server";
 import { z } from "zod";
 
 const SymptomInput = z.object({
@@ -45,7 +45,7 @@ export const chatSymptoms = createServerFn({ method: "POST" })
       ...data.history,
     ];
 
-    const reply = await callLovableAI(messages);
+    const reply = await callHavenAI(messages);
 
     type Level = "monitor" | "rest" | "appointment" | "emergency";
     let level: Level | null = null;
@@ -77,7 +77,7 @@ Time of day: ${data.timeOfDay}.
 
 Give warm, personalized tips (2-4 short paragraphs) to help them navigate the rest of their ${data.timeOfDay} into ${data.timeOfDay === "night" ? "sleep" : "the next part of the day"}. Suggest specific grounding, breathing, hydration, movement, or wind-down actions that fit the time of day. Be soft and encouraging. Use plain markdown, short lines, mobile-friendly.`;
 
-    const reply = await callLovableAI([
+    const reply = await callHavenAI([
       { role: "system", content: "You are the VitaSense wellness coach. Warm, gentle, practical. Never dismissive. Never diagnose." },
       { role: "user", content: prompt },
     ]);
@@ -102,7 +102,7 @@ export const chatMoodFollowup = createServerFn({ method: "POST" })
     if (data.mood) ctx.push(`Their current mood: ${data.mood}.`);
     if (data.anxietyScore !== null) ctx.push(`Their anxiety level: ${data.anxietyScore}/10.`);
 
-    const reply = await callLovableAI([
+    const reply = await callHavenAI([
       { role: "system", content: `You are the VitaSense wellness companion — warm, gentle, and always there so the user never feels alone. Continue the conversation naturally after their ${data.kind} check-in. Ask kind follow-up questions, offer grounding techniques, validate feelings, and share small practical tips when helpful. Never diagnose. Keep replies short, soft, and mobile-friendly. Use plain markdown.\n\nContext:\n${ctx.join("\n")}` },
       ...data.history,
     ]);
@@ -140,7 +140,7 @@ Use emoji headers, short bullets, and soft encouraging tone. Do not be preachy. 
 
 ${parts.join("\n")}`;
 
-    const reply = await callLovableAI([
+    const reply = await callHavenAI([
       { role: "system", content: "You are the VitaSense wellness coach. Personalize tips using the user's real preferences and routine. Never diagnose." },
       { role: "user", content: prompt },
     ]);
@@ -210,7 +210,7 @@ Behavior:
 Context:
 ${ctx.join("\n") || "No extra context yet."}`;
 
-    const reply = await callLovableAI([
+    const reply = await callHavenAI([
       { role: "system", content: system },
       ...data.history,
     ]);
@@ -230,7 +230,7 @@ export const generateGrounding = createServerFn({ method: "POST" })
   .handler(async ({ data }) => {
     const recent = (data.recentHistory ?? []).map((m) => `${m.role}: ${m.content}`).join("\n").slice(-1500);
 
-    const reply = await callLovableAI([
+    const reply = await callHavenAI([
       { role: "system", content: "You are Haven💫, a warm wellness companion. Generate ONE short grounding or calming exercise the user can do right now in under 2 minutes. Pick something fresh — vary between 4-7-8 breath, box breathing, 5-4-3-2-1 senses, body scan, butterfly hug, cold-water splash, gentle shoulder rolls, gratitude pause, humming, or a soft self-hug. Match the exercise to their current vibe if you can tell from context. Format: a warm 1-line intro, then numbered steps (3–5 short steps), then a soft closing line. Use plain markdown, short lines, light emoji (✨💗🌸). Do NOT ask follow-up questions — just deliver the exercise." },
       { role: "user", content: recent ? `Recent chat context:\n${recent}\n\nGive me a grounding exercise that fits.` : "Give me a grounding exercise." },
     ]);

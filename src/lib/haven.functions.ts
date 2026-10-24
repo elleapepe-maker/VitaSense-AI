@@ -1,6 +1,6 @@
 import { createServerFn } from "@tanstack/react-start";
 import { requireSupabaseAuth } from "@/integrations/supabase/auth-middleware";
-import { callLovableAI } from "@/lib/ai-gateway.server";
+import { callHavenAI } from "@/lib/ai-gateway.server";
 import { z } from "zod";
 
 export const HAVEN_PERSONALITIES = {
@@ -40,7 +40,7 @@ export const extractHavenMemory = createServerFn({ method: "POST" })
     // Ask AI to extract 0–2 short memorable facts, else empty array.
     let out = "";
     try {
-      out = await callLovableAI([
+      out = await callHavenAI([
         { role: "system", content: "You extract short memorable personal facts a supportive companion should remember (favorite things, people, struggles, coping tools that help, goals). Return ONLY a JSON array of 0-2 concise strings (max 100 chars each). If nothing worth remembering, return []. No preamble." },
         { role: "user", content: data.userMessage },
       ]);
@@ -103,8 +103,7 @@ export const generateWeeklyReport = createServerFn({ method: "POST" })
     const personality = (profRes.data?.haven_personality as HavenPersonality) ?? "gentle_guide";
     const styleNote = HAVEN_PERSONALITIES[personality]?.style ?? "";
 
-    const summary = await callLovableAI([
-      { role: "system", content: `You are Haven💫, the user's wellness companion. Write a "Weekly Glow Report" for ${profRes.data?.display_name ?? "them"}. Voice: ${styleNote}
+    const summary = await callHavenAI([      { role: "system", content: `You are Haven💫, the user's wellness companion. Write a "Weekly Glow Report" for ${profRes.data?.display_name ?? "them"}. Voice: ${styleNote}
 Structure (use markdown, warm and personal, ~180 words):
 ✨ **This week in a sentence**
 🌸 **Mood patterns** (what you noticed — days, trends)
